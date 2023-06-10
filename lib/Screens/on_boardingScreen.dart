@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sparks/Screens/Intro/IntroPage1.dart';
 import 'package:sparks/Screens/Intro/IntroPage2.dart';
 import 'package:sparks/Screens/Intro/IntroPage3.dart';
+import 'package:sparks/Screens/addDetails.dart';
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
 
@@ -63,6 +64,12 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                  GestureDetector(
                      onTap:(){
                        // controller.jumpToPage(1);
+                       Navigator.push(
+                           context,
+                           MaterialPageRoute(
+                               builder: (context) =>
+                                   AddCardDetails()))
+                           .then((value) => {});
                      },
                      child: Text("Done")
                  ):
