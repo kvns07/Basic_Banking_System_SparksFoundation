@@ -11,22 +11,43 @@ class AddCardDetails extends StatefulWidget {
 }
 
 class _AddCardDetailsState extends State<AddCardDetails> {
-  late String cardHolderName;
-  late String cardNumber;
-  late String cardExpiry;
-  late double currentBalance;
+  String?cardHolderName;
+  String?cardNumber;
+  String?cardExpiry;
+  double?currentBalance;
 
   DatabaseHelper _dbhelper = new DatabaseHelper();
 
   @override
   Widget build(BuildContext context) {
+    String error="";
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text("Add Account Details"),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          "Card Details",
+          style:const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              fontFamily: "serif",
+              fontStyle:  FontStyle.normal,
+              fontSize: 25.0
+          ) ,
+        ),
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.white, Colors.blue],
+          ),
+        ),
         child: Column(
           children: [
             Spacer(),
@@ -35,6 +56,11 @@ class _AddCardDetailsState extends State<AddCardDetails> {
               child: Container(
                 child: Column(
                   children: [
+                    Icon(
+                      Icons.add_card,
+                      size: 100,
+                      color: Colors.black,
+                    ),
                     CustomTextField(
                       hintName: "Enter cardholder name",
                       onChanged: (value) => {cardHolderName = value},
@@ -65,10 +91,10 @@ class _AddCardDetailsState extends State<AddCardDetails> {
                               cardExpiry != null &&
                               currentBalance != null) {
                             UserData _userData = UserData(
-                              userName: cardHolderName,
-                              cardNumber: cardNumber,
-                              cardExpiry: cardExpiry,
-                              totalAmount: currentBalance,
+                              userName: cardHolderName!,
+                              cardNumber: cardNumber!,
+                              cardExpiry: cardExpiry!,
+                              totalAmount: currentBalance!,
                             );
 
                             await _dbhelper.insertUserDetails(_userData);
@@ -85,22 +111,57 @@ class _AddCardDetailsState extends State<AddCardDetails> {
                                                   HomeScreen()))
                                           .then((value) => {});
                                     },
-                                    title: "Success",
+                                    title: "Card Details added",
                                     isSuccess: true,
                                     description:
-                                    "Thanking for adding your details",
+                                    "",
                                     buttonText: "Ok",
                                     addIcon: Icon(
-                                      Icons.check,
+                                      Icons.credit_card,
                                       color: Colors.white,
                                       size: 50,
                                     ),
                                   );
                                 });
-                          } else {
+                          } else if(cardHolderName == null||
+                              cardNumber == null ||
+                              cardExpiry == null ||
+                              currentBalance == null){
+                            setState(() {
+                              error="Enter all fields please";
+                            });
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return CustomDialog(
+                                    onpressed: () {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             AddCardDetails()))
+                                      //     .then((value) => {});
+                                    },
+                                    title: "Please fill all the fields",
+                                    isSuccess: false,
+                                    description:
+                                    "",
+                                    buttonText: "",
+                                    addIcon: Icon(
+                                      Icons.credit_card,
+                                      color: Colors.white,
+                                      size: 50,
+                                    ),
+                                  );
+                                });
                             print("Fail to insert");
                           }
                         },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black, // Background color
+                          onPrimary: Colors.amber,
+                          shadowColor: Colors.amber,// Text Color (Foreground color)
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(18.0),
                           child: Text(
@@ -116,6 +177,7 @@ class _AddCardDetailsState extends State<AddCardDetails> {
                 ),
               ),
             ),
+            Text(error),
             Spacer(),
           ],
         ),

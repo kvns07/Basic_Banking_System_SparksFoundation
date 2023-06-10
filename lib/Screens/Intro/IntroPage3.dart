@@ -5,6 +5,13 @@ class IntroPage3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.center,
+            end: Alignment.bottomCenter,
+            colors: [Colors.white, Colors.blueAccent],
+          ),
+        ),
         padding: EdgeInsets.symmetric(horizontal: 18.0),
         child: Column(
           children: <Widget>[
@@ -12,7 +19,7 @@ class IntroPage3 extends StatelessWidget {
               flex: 1,
               fit: FlexFit.tight,
               child: Image.asset(
-                'Assets/shop.jpg',
+                'Assets/transaction.png',
                 fit: BoxFit.fitWidth,
                 width: 220.0,
                 alignment: Alignment.bottomCenter,
@@ -25,16 +32,16 @@ class IntroPage3 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
                   children: <Widget>[
-                    Text("Online",
+                    Text("Simple",
                         style: TextStyle(
                             fontSize: 50.0,
                             fontWeight: FontWeight.w300,
                             color: Color(0XFF3F3D56),
                             height: 2.0)),
                     Text(
-                      "Now do things Online",
+                      "Hassle free transactions",
                       style: TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black,
                           letterSpacing: 1.2,
                           fontSize: 16.0,
                           height: 1.3),

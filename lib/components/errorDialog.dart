@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomDialog extends StatelessWidget {
+class eCustomDialog extends StatelessWidget {
   final String title, description, buttonText;
   final Widget addIcon;
   final VoidCallback onpressed;
   final bool isSuccess;
 
-  CustomDialog({
+  eCustomDialog({
     required this.title,
     required this.description,
     required this.buttonText,
@@ -40,7 +40,7 @@ class CustomDialog extends StatelessWidget {
             top: 16,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.red,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(17),
             boxShadow: [

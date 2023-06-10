@@ -5,6 +5,13 @@ class IntroPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.center,
+            end: Alignment.bottomCenter,
+            colors: [Colors.white, Colors.purpleAccent],
+          ),
+        ),
         padding: EdgeInsets.symmetric(horizontal: 18.0),
         child: Column(
           children: <Widget>[
@@ -12,7 +19,7 @@ class IntroPage2 extends StatelessWidget {
               flex: 1,
               fit: FlexFit.tight,
               child: Image.asset(
-                'Assets/shop.jpg',
+                'Assets/online.png',
                 fit: BoxFit.fitWidth,
                 width: 220.0,
                 alignment: Alignment.bottomCenter,
@@ -34,7 +41,7 @@ class IntroPage2 extends StatelessWidget {
                     Text(
                       "Now do things Online",
                       style: TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black,
                           letterSpacing: 1.2,
                           fontSize: 16.0,
                           height: 1.3),

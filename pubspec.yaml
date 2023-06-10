@@ -68,8 +68,9 @@ flutter:
     - Assets/password.png
     - Assets/safe.png
     - Assets/transaction.png
-    - Assets/online2.svg
+    - Assets/online2.jpg
     - Assets/shop.jpg
+    - Assets/safepay.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

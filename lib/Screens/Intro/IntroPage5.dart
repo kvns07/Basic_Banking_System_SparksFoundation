@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-class IntroPage1 extends StatelessWidget {
-  const IntroPage1({Key? key}) : super(key: key);
+class IntroPage5 extends StatelessWidget {
+  const IntroPage5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.center,
-              end: Alignment.bottomCenter,
-              colors: [Colors.white, Colors.deepPurpleAccent],
+            begin: Alignment.center,
+            end: Alignment.bottomCenter,
+            colors: [Colors.white,Colors.red],
           ),
         ),
         padding: EdgeInsets.symmetric(horizontal: 18.0),
@@ -19,7 +19,7 @@ class IntroPage1 extends StatelessWidget {
               flex: 1,
               fit: FlexFit.tight,
               child: Image.asset(
-                'Assets/safe.png',
+                'Assets/safepay.png',
                 fit: BoxFit.fitWidth,
                 width: 220.0,
                 alignment: Alignment.bottomCenter,
@@ -32,14 +32,14 @@ class IntroPage1 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
                   children: <Widget>[
-                    Text("Safe",
+                    Text("Welcome to SafePay",
                         style: TextStyle(
-                            fontSize: 50.0,
-                            fontWeight: FontWeight.w300,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w500,
                             color: Color(0XFF3F3D56),
                             height: 2.0)),
                     Text(
-                      "Safety Is Free, Use Plenty Of It.",
+                      "Pure Banking, Nothing Else",
                       style: TextStyle(
                           color: Colors.black,
                           letterSpacing: 1.2,
