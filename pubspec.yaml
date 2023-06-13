@@ -71,6 +71,7 @@ flutter:
     - Assets/online2.jpg
     - Assets/shop.jpg
     - Assets/safepay.png
+    - Assets/SBI.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

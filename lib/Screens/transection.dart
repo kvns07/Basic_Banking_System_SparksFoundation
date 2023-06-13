@@ -32,6 +32,8 @@ class _TransferMoneyState extends State<TransferMoney> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text("Transfer Money"),
       ),
       body: SingleChildScrollView(

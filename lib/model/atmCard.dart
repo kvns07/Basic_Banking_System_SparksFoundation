@@ -63,8 +63,8 @@ class _UserATMCardState extends State<UserATMCard> {
           Positioned(
             right: 21,
             top: 35,
-            child: SvgPicture.asset(
-              cardsIcon[0],
+            child: Image.asset(
+              'Assets/SBI.png',
               width: 40,
             ),
           ),
