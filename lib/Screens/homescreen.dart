@@ -202,15 +202,29 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             // <<<<<<<<< Transaction Section >>>>>>>>>>>> //
-
-            ElevatedButton.icon(onPressed:(){
-              Navigator.push(
-                context,MaterialPageRoute(
-                builder: (_) => THistory(),
-              )
-              );
-            }, icon: Icon(Icons.add_card),
-              label: Text("Histroy"),
+            SizedBox(height:20),
+            SizedBox(
+              width: 340,
+              height: 90,
+              child: ElevatedButton.icon(onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(
+                  builder: (_) => THistory(),
+                )
+                );
+              }, style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        side: BorderSide(color: Colors.greenAccent)
+                    )
+                ),
+                backgroundColor: MaterialStatePropertyAll<Color>(Colors.greenAccent),
+              ),
+                icon: Icon(Icons.add_card),
+                label: Text("Transaction Histroy",
+                    style: TextStyle(fontSize: 22)),
+              ),
             )
 
             // SizedBox(
