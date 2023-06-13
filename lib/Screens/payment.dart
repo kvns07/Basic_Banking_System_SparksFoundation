@@ -92,7 +92,7 @@ class _PaymentState extends State<Payment> {
                   )),
             ],
           ),
-          Spacer(),
+          // Spacer(),
           Flexible(
             child: Container(
               width: double.infinity,

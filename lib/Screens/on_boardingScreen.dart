@@ -7,9 +7,13 @@ import 'package:sparks/Screens/Intro/IntroPage4.dart';
 import 'package:sparks/Screens/Intro/IntroPage5.dart';
 import 'package:sparks/Screens/addDetails.dart';
 import 'package:sparks/components/dialog.dart';
-class OnBoardScreen extends StatefulWidget {
-  const OnBoardScreen({Key? key}) : super(key: key);
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sparks/model/sharedprf.dart';
 
+class OnBoardScreen extends StatefulWidget {
+  SharedPreferences?prefs;
+  String ?boolKey;
+  OnBoardScreen({this.prefs, this.boolKey});
   @override
   State<OnBoardScreen> createState() => _OnBoardScreenState();
 }
@@ -18,6 +22,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   bool onLastPage=false;
   @override
   Widget build(BuildContext context) {
+    widget.prefs?.setBool(widget.boolKey!, true);
     final controller=PageController(
       initialPage:0,
     );
@@ -53,7 +58,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                       onTap:(){
                         controller.jumpToPage(3);
                       },
-                      child: Text(">>")
+                      child: Text(">>",
+                        style: TextStyle(fontWeight: FontWeight.w400,fontSize: 27),)
                  ):
                  GestureDetector(
                      onTap:(){
@@ -99,13 +105,15 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                        //             AddCardDetails()))
                        //     .then((value) => {});
                      },
-                     child: Text("Done")
+                     child: Text("Done",
+                     style:TextStyle(fontSize: 22))
                  ):
                  GestureDetector(
                      onTap:(){
                        controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeIn);
                      },
-                     child: Text(">")
+                     child: Text(">",
+                     style: TextStyle(fontWeight: FontWeight.w400,fontSize: 27),)
                  ),
                ],
              )

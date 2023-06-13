@@ -30,32 +30,34 @@ class _THistoryState extends State<THistory> {
     ),
 
       body:Container(
-        child: Column(
-          children: [
-            SizedBox(height: 70,),
-            FutureBuilder(
-              initialData: [],
-              future: _dbhelper.getTransectionDetatils(),
-              builder: (context, snapshot) {
-                return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: mgDefaultPadding),
-                  itemBuilder: (context, index) {
-                    return TransactionHistroy(
-                      isTransfer: true,
-                      customerName: snapshot.data![index].userName,
-                      transferAmount: snapshot.data![index].transectionAmount,
-                      senderName: snapshot.data![index].senderName,
-                      avatar: snapshot.data![index].userName[0],
-                    );
-                  },
-                );
-              },
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 70,),
+              FutureBuilder(
+                initialData: [],
+                future: _dbhelper.getTransectionDetatils(),
+                builder: (context, snapshot) {
+                  return ListView.builder(
+                    itemCount: snapshot.data?.length,
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: mgDefaultPadding),
+                    itemBuilder: (context, index) {
+                      return TransactionHistroy(
+                        isTransfer: true,
+                        customerName: snapshot.data![index].userName,
+                        transferAmount: snapshot.data![index].transectionAmount,
+                        senderName: snapshot.data![index].senderName,
+                        avatar: snapshot.data![index].userName[0],
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       )
     );

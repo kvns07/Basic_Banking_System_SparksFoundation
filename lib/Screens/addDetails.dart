@@ -46,7 +46,7 @@ class _AddCardDetailsState extends State<AddCardDetails> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.white, Colors.blue],
+            colors: [Colors.white, Colors.greenAccent],
           ),
         ),
         child: Column(
@@ -85,90 +85,94 @@ class _AddCardDetailsState extends State<AddCardDetails> {
                     ),
                     Container(
                       width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          if (cardHolderName != null &&
-                              cardNumber != null &&
-                              cardExpiry != null &&
-                              currentBalance != null) {
-                            UserData _userData = UserData(
-                              userName: cardHolderName!,
-                              cardNumber: cardNumber!,
-                              cardExpiry: cardExpiry!,
-                              totalAmount: currentBalance!,
-                            );
+                      child: SizedBox(
+                        width: 90,
+                        height: 70,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            if (cardHolderName != null &&
+                                cardNumber != null &&
+                                cardExpiry != null &&
+                                currentBalance != null) {
+                              UserData _userData = UserData(
+                                userName: cardHolderName!,
+                                cardNumber: cardNumber!,
+                                cardExpiry: cardExpiry!,
+                                totalAmount: currentBalance!,
+                              );
 
-                            await _dbhelper.insertUserDetails(_userData);
+                              await _dbhelper.insertUserDetails(_userData);
 
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return CustomDialog(
-                                    onpressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeScreen()))
-                                          .then((value) => {});
-                                    },
-                                    title: "Card Details added",
-                                    isSuccess: true,
-                                    description:
-                                    "",
-                                    buttonText: "Ok",
-                                    addIcon: Icon(
-                                      Icons.credit_card,
-                                      color: Colors.white,
-                                      size: 50,
-                                    ),
-                                  );
-                                });
-                          } else if(cardHolderName == null||
-                              cardNumber == null ||
-                              cardExpiry == null ||
-                              currentBalance == null){
-                            setState(() {
-                              error="Enter all fields please";
-                            });
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return CustomDialog(
-                                    onpressed: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             AddCardDetails()))
-                                      //     .then((value) => {});
-                                    },
-                                    title: "Please fill all the fields",
-                                    isSuccess: false,
-                                    description:
-                                    "",
-                                    buttonText: "",
-                                    addIcon: Icon(
-                                      Icons.credit_card,
-                                      color: Colors.white,
-                                      size: 50,
-                                    ),
-                                  );
-                                });
-                            print("Fail to insert");
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.black, // Background color
-                          onPrimary: Colors.amber,
-                          shadowColor: Colors.amber,// Text Color (Foreground color)
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(
-                              fontSize: 18,
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return CustomDialog(
+                                      onpressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomeScreen()))
+                                            .then((value) => {});
+                                      },
+                                      title: "Card Details added",
+                                      isSuccess: true,
+                                      description:
+                                      "",
+                                      buttonText: "Ok",
+                                      addIcon: Icon(
+                                        Icons.credit_card,
+                                        color: Colors.white,
+                                        size: 50,
+                                      ),
+                                    );
+                                  });
+                            } else if(cardHolderName == null||
+                                cardNumber == null ||
+                                cardExpiry == null ||
+                                currentBalance == null){
+                              setState(() {
+                                error="Enter all fields please";
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return CustomDialog(
+                                      onpressed: () {
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             AddCardDetails()))
+                                        //     .then((value) => {});
+                                      },
+                                      title: "Please fill all the fields",
+                                      isSuccess: false,
+                                      description:
+                                      "",
+                                      buttonText: "",
+                                      addIcon: Icon(
+                                        Icons.credit_card,
+                                        color: Colors.white,
+                                        size: 50,
+                                      ),
+                                    );
+                                  });
+                              print("Fail to insert");
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.greenAccent, // Background color
+                            onPrimary: Colors.black,
+                            shadowColor: Colors.amber,// Text Color (Foreground color)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Text(
+                              "Submit",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                         ),

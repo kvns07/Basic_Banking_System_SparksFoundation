@@ -19,32 +19,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   DatabaseHelper _dbhelper = new DatabaseHelper();
   String userName = "Hello! ";
-  String avatar = "H";
-  DateTime currentTime = DateTime.now();
-  List<String> greetingList = [
-    "Good Morning",
-    "Good AfterNoon",
-    "Good Evening",
-    "Good Night"
-  ];
+  String ?avatar;
   String ?greeting;
   double ?currentBalance;int?currentCustomerId;String?currentUserCardNumeber,senderName;
 
   List<CardData> ?_list;
 
   int current = 0;
-  List datas = ["Money Transfer", "Bank Withdraw", "Insights Tracking"];
-
-
-  // Handling indicator
-  List<T> map<T>(List list, Function handler) {
-    List<T> result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.add(handler(i, list[i]));
-    }
-
-    return result;
-  }
 
   @override
   void initState() {
@@ -54,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    avatar= userName;
     return Scaffold(
       backgroundColor: mgBgColor,
       appBar: AppBar(
@@ -61,6 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.only(left: mgDefaultPadding),
+        ),
+        title: Image.asset(
+          'Assets/safepay.png',
+          fit: BoxFit.fitWidth,
+          width: 220.0,
+          alignment: Alignment.bottomCenter,
         ),
       ),
       body: SingleChildScrollView(
@@ -219,76 +207,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         side: BorderSide(color: Colors.greenAccent)
                     )
                 ),
-                backgroundColor: MaterialStatePropertyAll<Color>(Colors.greenAccent),
+                backgroundColor: MaterialStatePropertyAll<Color>(Colors.blueAccent),
               ),
                 icon: Icon(Icons.add_card),
                 label: Text("Transaction Histroy",
                     style: TextStyle(fontSize: 22)),
               ),
-            )
-
-            // SizedBox(
-            //   width: 155, // <-- Your width
-            //   height: 135,
-            //   child: ElevatedButton.icon(
-            //       onPressed: (){
-            //         Navigator.push(context,
-            //           MaterialPageRoute(
-            //             builder: (_) => AddCardDetails(),
-            //           ),
-            //         );
-            //       },
-            //       style: ButtonStyle(
-            //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            //             RoundedRectangleBorder(
-            //                 borderRadius: BorderRadius.circular(30.0),
-            //                 side: BorderSide(color: Colors.greenAccent)
-            //             )
-            //         ),
-            //         backgroundColor: MaterialStatePropertyAll<Color>(Colors.greenAccent),
-            //       ),
-            //       icon: Icon(Icons.credit_card),
-            //       label: Text(
-            //         "Add Bank",
-            //         style: TextStyle(fontSize: 22),
-            //       )),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(
-            //       left: mgDefaultPadding,
-            //       bottom: 13,
-            //       top: 29,
-            //       right: mgDefaultPadding),
-            //   child: Text(
-            //     "Transaction Histories",
-            //     style: Theme.of(context)
-            //         .textTheme
-            //         .subtitle2
-            //         ?.copyWith(fontSize: 18, fontWeight: FontWeight.w700),
-            //   ),
-            // ),
-            // FutureBuilder(
-            //   initialData: [],
-            //   future: _dbhelper.getTransectionDetatils(),
-            //   builder: (context, snapshot) {
-            //     return ListView.builder(
-            //       itemCount: snapshot.data?.length,
-            //       shrinkWrap: true,
-            //       physics: BouncingScrollPhysics(),
-            //       padding: EdgeInsets.symmetric(
-            //           horizontal: mgDefaultPadding),
-            //       itemBuilder: (context, index) {
-            //         return TransactionHistroy(
-            //           isTransfer: true,
-            //           customerName: snapshot.data![index].userName,
-            //           transferAmount: snapshot.data![index].transectionAmount,
-            //           senderName: snapshot.data![index].senderName,
-            //           avatar: snapshot.data![index].userName[0],
-            //         );
-            //       },
-            //     );
-            //   },
-            // ),
+            ),
 
           ],
         ),
